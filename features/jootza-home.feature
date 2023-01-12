@@ -1,10 +1,19 @@
 Feature: As a jootza customer, I want to be able to navigate to landing poage so that I can view product information
 
-  @jootza
+  @jootza @test
   Scenario: Customer is displayed with jootza.com landing page
     Given I am on the Jootza portal
     When I click on "Login"
     Then I should see "LoginHeader"
+
+  @jootza @invalidCredentials @loginError
+  Scenario: Customer is diplayed with jootza.com login page
+  Given I am on the Jootza portal
+  When I click on "Login"
+  And I enter username "test"
+  And I enter password "test"
+  And I click on "Login Button"
+  Then I should see "error Message"
 
   @jootza @jootzaLogin
   Scenario: Customer is displayed with jootza.com landing page and tries to login into the portal
